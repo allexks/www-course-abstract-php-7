@@ -14,7 +14,7 @@
             <h2>Що е PHP и какви версии има?</h2>
             <p>PHP 7 is a major release of PHP programming language and is touted to be a revolution in the way web applications can be developed and delivered for mobile to enterprises and the cloud. This release is considered to be the most important change for PHP after the release of PHP 5 in 2004.</p>
 
-            <h2>Новите неща в PHP</h2>
+            <h2>Новите неща в PHP 7</h2>
             <p>
                 PHP 7 uses new Zend Engine 3.0 to improve application performance almost twice and 50% better memory consumption than PHP 5.6. It allows to serve more concurrent users without requiring any additional hardware. PHP 7 is designed and refactored considering today's workloads.
                 <br />
@@ -57,22 +57,25 @@
 
             <h2 id="scalar">Деклариране на скаларни типове</h2>
             <p>
-                In PHP 7, a new feature, Scalar type declarations, has been introduced. Scalar type declaration has two options −
+                In PHP 7, a new feature, Scalar type declarations, has been introduced. Scalar type declaration has two options:<br />
+                <ol>
+                    <li>coercive - coercive is default mode and need not to be specified.</li>
+                    <li>strict - strict mode has to explicitly hinted.</li>
+                </ol>
 
-                coercive - coercive is default mode and need not to be specified.
+                Following types for function parameters can be enforced using the above modes:
+                <ul>
+                    <li>int</li>
+                    <li>float</li>
+                    <li>bool</li>
+                    <li>string</li>
+                    <li>interfaces</li>
+                    <li>array</li>
+                    <li>callable</li>
+                </ul>
 
-                strict - strict mode has to explicitly hinted.
+                <b>Example - Coercive Mode</b>
 
-                Following types for function parameters can be enforced using the above modes −
-
-                int
-                float
-                bool
-                string
-                interfaces
-                array
-                callable
-                Example - Coercive Mode
                 <div class="code">
                     // Coercive mode <br />
                     function sum(int ...$ints) {<br />
@@ -81,12 +84,12 @@
                     print(sum(2, '3', 4.1));<br />
                 </div>
 
-                It produces the following browser output − <br />
+                It produces the following browser output:<br />
                 <div class="code">
                     9
                 </div>
 
-                Example - Strict Mode
+                <b>Example - Strict Mode</b>
                 <div class="code">
                     // Strict mode<br />
                     declare(strict_types=1);<br />
@@ -96,7 +99,7 @@
                     print(sum(2, '3', 4.1));<br />
                 </div>
 
-                It produces the following browser output − <br />
+                It produces the following browser output:<br />
 
                 <div class="code">
                     Fatal error: Uncaught TypeError: Argument 2 passed to sum() must be of the type integer, string given, ...
@@ -104,49 +107,557 @@
             </p>
 
             <h2 id="return">Деклариране на тип на функция</h2>
-            <p></p>
+            <p>
+                In PHP 7, a new feature, Return type declarations has been introduced. Return type declaration specifies the type of value that a function should return.<br />
+                Following types for return types can be declared:
+                <ul>
+                    <li>int</li>
+                    <li>float</li>
+                    <li>bool</li>
+                    <li>string</li>
+                    <li>nterfaces</li>
+                    <li>array</li>
+                    <li>callable</li>
+                </ul>
+
+                <b>Example - Valid Return Type</b>
+
+                <div class="code">
+                    declare(strict_types = 1);<br />
+                    function returnIntValue(int $value): int {<br />
+                        return $value;<br />
+                    }<br />
+                    print(returnIntValue(5));<br />
+                </div>
+
+                It produces the following browser output:<br />
+                <div class="code">
+                    5
+                </div>
+
+                <b>Example - Invalid Return Type</b>
+
+                <div class="code">
+                    declare(strict_types = 1);<br />
+                    function returnIntValue(int $value): int {<br />
+                        return $value + 1.0;<br />
+                    }<br />
+                    print(returnIntValue(5));<br />
+                </div>
+
+                It produces the following browser output:<br />
+
+                <div class="code">
+                    Fatal error: Uncaught TypeError: Return value of returnIntValue() must be of the type integer, float returned...
+                </div>
+            </p>
 
             <h2 id="null">Оператор за null проверка</h2>
-            <p></p>
+            <p>
+                In PHP 7, a new feature, null coalescing operator (??) has been introduced. It is used to replace the ternary operation in conjunction with isset() function. The Null coalescing operator returns its first operand if it exists and is not NULL; otherwise it returns its second operand.
+                <br />
+                <br />
+                <b>Example:</b>
+                <div class="code">
+                    // fetch the value of $_GET['user'] and returns 'not passed'<br />
+                    // if username is not passed<br />
+                    $username = $_GET['username'] ?? 'not passed';<br />
+                    print($username);<br />
+                    print("&lt;br /&gt;");<br />
+                    <br />
+                    // Equivalent code using ternary operator<br />
+                    $username = isset($_GET['username']) ? $_GET['username'] : 'not passed';<br />
+                    print($username);<br />
+                    print("&lt;br /&gt;");<br />
+                    // Chaining ?? operation<br />
+                    $username = $_GET['username'] ?? $_POST['username'] ?? 'not passed';<br />
+                    print($username);<br />
+                </div>
+
+                It produces the following browser output:
+                <div class="code">
+                    not passed<br />
+                    not passed<br />
+                    not passed<br />
+                </div>
+            </p>
 
             <h2 id="spaceship">Оператор "космически кораб"</h2>
-            <p></p>
+            <p>
+                In PHP 7, a new feature, spaceship operator has been introduced. It is used to compare two expressions. It returns -1, 0 or 1 when first expression is respectively less than, equal to, or greater than second expression.
+                <br />
+                <br />
+                <b>Example:</b>
+                <div class="code">
+                    //integer comparison<br />
+                    print( 1 <=> 1);print("&lt;br /&gt;");<br />
+                    print( 1 <=> 2);print("&lt;br /&gt;");<br />
+                    print( 2 <=> 1);print("&lt;br /&gt;");<br />
+                    print("&lt;br /&gt;");<br />
+                    //float comparison<br />
+                    print( 1.5 <=> 1.5);print("&lt;br /&gt;");<br />
+                    print( 1.5 <=> 2.5);print("&lt;br /&gt;");<br />
+                    print( 2.5 <=> 1.5);print("&lt;br /&gt;");<br />
+                    print("&lt;br /&gt;");<br />
+                    //string comparison<br />
+                    print( "a" <=> "a");print("&lt;br /&gt;");<br />
+                    print( "a" <=> "b");print("&lt;br /&gt;");<br />
+                    print( "b" <=> "a");print("&lt;br /&gt;");<br />
+                </div>
+
+                It produces the following browser output:<br />
+
+                <div class="code">
+                    0<br />
+                    -1<br />
+                    1<br />
+                    <br />
+                    0<br />
+                    -1<br />
+                    1<br />
+                    <br />
+                    0<br />
+                    -1<br />
+                    1<br />
+                </div>
+            </p>
 
             <h2 id="const">Масиви, които са константи</h2>
-            <p></p>
+            <p>
+                Array constants can now be defined using the define() function. In PHP 5.6, they could only be defined using const keyword.
+                <br />
+                <br />
+                <b>Example:</b>
+                <div class="code">
+                    //define a array using define function<br />
+                    define('animals', [<br />
+                    'dog',<br />
+                    'cat',<br />
+                    'bird'<br />
+                    ]);<br />
+                    print(animals[1]);<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    cat
+                </div>
+            </p>
 
             <h2 id="anon">Анонимни класове</h2>
-            <p></p>
+            <p>
+                Anonymous classes can now be defined using new class. Anonymous class can be used in place of a full class definition.
+                <br />
+                <br />
+                <b>Example:</b>
+                <div class="code">
+                    interface Logger {<br />
+                        public function log(string $msg);<br />
+                    }<br />
+                    <br />
+                    class Application {<br />
+                        private $logger;<br />
+                        <br />
+                        public function getLogger(): Logger {<br />
+                            return $this->logger;<br />
+                        }<br />
+                        <br />
+                        public function setLogger(Logger $logger) {<br />
+                            $this->logger = $logger;<br />
+                        }<br />
+                    }<br />
+                    <br />
+                    $app = new Application;<br />
+                    $app->setLogger(new class implements Logger {<br />
+                        public function log(string $msg) {<br />
+                            print($msg);<br />
+                        }<br />
+                    });<br />
+                    <br />
+                    $app->getLogger()->log("My first Log Message");<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    My first Log Message
+                </div>
+            </p>
 
             <h2 id="closure">Closure::call()</h2>
-            <p></p>
+            <p>
+                Closure::call() method is added as a shorthand way to temporarily bind an object scope to a closure and invoke it. It is much faster in performance as compared to bindTo of PHP 5.6.
+                <br />
+                <br />
+                <b>Example - Pre PHP 7</b>
+                <div class="code">
+                    class A {<br />
+                        private $x = 1;<br />
+                    }<br />
+                    <br />
+                    // Define a closure Pre PHP 7 code<br />
+                    $getValue = function() {<br />
+                        return $this->x;<br />
+                    };<br />
+                    <br />
+                    // Bind a clousure<br />
+                    $value = $getValue->bindTo(new A, 'A');<br />
+                    <br />
+                    print($value());<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    1
+                </div>
+
+                <b>Example - PHP 7+</b>
+                <div class="code">
+                    class A {<br />
+                        private $x = 1;<br />
+                    }<br />
+                    <br />
+                    // PHP 7+ code, Define<br />
+                    $value = function() {<br />
+                        return $this->x;<br />
+                    };<br />
+                    <br />
+                    print($value->call(new A));<br />
+                </div>
+
+                It produces the following browser output −
+
+                <div class="code">
+                    1
+                </div>
+            </p>
 
             <h2 id="unserialize">Филтриран unserialize</h2>
-            <p></p>
+            <p>
+                PHP 7 introduces Filtered unserialize() function to provide better security when unserializing objects on untrusted data. It prevents possible code injections and enables the developer to whitelist classes that can be unserialized.
+                <br />
+                <br />
+                <b>Example</b>
+                <div class="code">
+                    class MyClass1 {<br />
+                        public $obj1prop;<br />
+                    }<br />
+                    class MyClass2 {<br />
+                        public $obj2prop;<br />
+                    }<br />
+                    <br />
+                    $obj1 = new MyClass1();<br />
+                    $obj1->obj1prop = 1;<br />
+                    $obj2 = new MyClass2();<br />
+                    $obj2->obj2prop = 2;<br />
+                    <br />
+                    $serializedObj1 = serialize($obj1);<br />
+                    $serializedObj2 = serialize($obj2);<br />
+                    <br />
+                    // default behaviour that accepts all classes<br />
+                    // second argument can be ommited.<br />
+                    // if allowed_classes is passed as false, unserialize converts all objects into __PHP_Incomplete_Class object<br />
+                    $data = unserialize($serializedObj1 , ["allowed_classes" => true]);<br />
+                    <br />
+                    // converts all objects into __PHP_Incomplete_Class object except those of MyClass1 and MyClass2<br />
+                    $data2 = unserialize($serializedObj2 , ["allowed_classes" => ["MyClass1", "MyClass2"]]);<br />
+                    <br />
+                    print($data->obj1prop);<br />
+                    print("&lt;br/&gt;");<br />
+                    print($data2->obj2prop);<br />
+                </div>
+
+                It produces the following browser output:<br />
+
+                <div class="code">
+                    1<br />
+                    2<br />
+                </div>
+            </p>
 
             <h2 id="char">IntlChar</h2>
-            <p></p>
+            <p>
+                In PHP7, a new IntlChar class is added, which seeks to expose additional ICU functionality. This class defines a number of static methods and constants, which can be used to manipulate unicode characters. You need to have Intl extension installed prior to using this class.
+                <br />
+                <br />
+                <b>Example</b>
+                <div class="code">
+                    printf('%x', IntlChar::CODEPOINT_MAX);<br />
+                    print (IntlChar::charName('@'));<br />
+                    print(IntlChar::ispunct('!'));<br />
+                </div>
+
+                It produces the following browser output:<br />
+
+                <div class="code">
+                    10ffff
+                    COMMERCIAL AT
+                    true
+                </div>
+            </p>
 
             <h2 id="csprng">CSPRNG</h2>
-            <p></p>
+            <p>
+                In PHP 7, following two new functions are introduced to generate cryptographically secure integers and strings in a cross platform way.
+                <br />
+                <ul>
+                    <li>random_bytes() − Generates cryptographically secure pseudo-random bytes.</li>
+                    <li>random_int() − Generates cryptographically secure pseudo-random integers.</li>
+                </ul>
+                <h3>random_bytes()<h3/>
+                random_bytes() generates an arbitrary-length string of cryptographic random bytes that are suitable for cryptographic use, such as when generating salts, keys or initialization vectors.
+
+                <h4>Syntax</h4>
+                <div class="code">
+                    string random_bytes ( int $length )
+                </div>
+
+                <h4>Parameters</h4>
+                <i>length</i> − The length of the random string that should be returned in bytes.
+
+                <h4>Return Values</h4>
+                Returns a string containing the requested number of cryptographically secure random bytes.
+
+                <h4>Errors/Exceptions</h4>
+                If an appropriate source of randomness cannot be found, an Exception will be thrown.<br />
+
+                If invalid parameters are given, a TypeError will be thrown.<br />
+
+                If an invalid length of bytes is given, an Error will be thrown.<br /><br />
+
+                <b>Example</b>
+                <div class="code">
+                    $bytes = random_bytes(5);<br />
+                    print(bin2hex($bytes));<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    54cc305593
+                </div>
+
+                <h3>random_int()</h3>
+                random_int() generates cryptographic random integers that are suitable for use where unbiased results are critical.
+
+                <h4>Syntax</h4>
+                <div class="code">
+                    int random_int ( int $min , int $max )
+                </div>
+
+                <h4>Parameters</h4>
+                <i>min</i> − The lowest value to be returned, which must be PHP_INT_MIN or higher.<br />
+
+                <i>max</i> - The highest value to be returned, which must be less than or equal to PHP_INT_MAX.
+
+                <h4>Return Values</h4>
+                Returns a cryptographically secure random integer in the range min to max, inclusive.
+
+                <h4>Errors/Exceptions</h4>
+                If an appropriate source of randomness cannot be found, an Exception will be thrown.<br />
+
+                If invalid parameters are given, a TypeError will be thrown.<br />
+
+                If max is less than min, an Error will be thrown.<br /><br />
+
+                <b>Example</b>
+                <div class="code">
+                    print(random_int(100, 999));<br />
+                    print("");<br />
+                    print(random_int(-1000, 0));<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    614<br />
+                    -882<br />
+                </div>
+            </p>
 
             <h2 id="use">Use изрази</h2>
-            <p></p>
+            <p>
+                From PHP7 onwards, a single use statement can be used to import Classes, functions and constants from same namespace instead of multiple use statements.
+                <br />
+                <br />
+                <b>Example</b>
+
+                <div class="code">
+                    // Before PHP 7<br />
+                    use com\tutorialspoint\ClassA;<br />
+                    use com\tutorialspoint\ClassB;<br />
+                    use com\tutorialspoint\ClassC as C;<br />
+                    <br />
+                    use function com\tutorialspoint\fn_a;<br />
+                    use function com\tutorialspoint\fn_b;<br />
+                    use function com\tutorialspoint\fn_c;<br />
+                    <br />
+                    use const com\tutorialspoint\ConstA;<br />
+                    use const com\tutorialspoint\ConstB;<br />
+                    use const com\tutorialspoint\ConstC;<br />
+                    <br />
+                    // PHP 7+ code<br />
+                    use com\tutorialspoint\{ClassA, ClassB, ClassC as C};<br />
+                    use function com\tutorialspoint\{fn_a, fn_b, fn_c};<br />
+                    use const com\tutorialspoint\{ConstA, ConstB, ConstC};<br />
+                </div>
+            </p>
 
             <h2 id="error">Обработване на грешки</h2>
-            <p></p>
+            <p>
+                From PHP 7, error handling and reporting has been changed. Instead of reporting errors through the traditional error reporting mechanism used by PHP 5, now most errors are handled by throwing Error exceptions. Similar to exceptions, these Error exceptions bubble up until they reach the first matching catch block. If there are no matching blocks, then a default exception handler installed with set_exception_handler() will be called. In case there is no default exception handler, then the exception will be converted to a fatal error and will be handled like a traditional error.<br />
+
+                As the Error hierarchy is not extended from Exception, code that uses catch (Exception $e) { ... } blocks to handle uncaught exceptions in PHP 5 will not handle such errors. A catch (Error $e) { ... } block or a set_exception_handler() handler is required to handle fatal errors.
+                <br />
+                Exception Hierarchy
+                <img />
+                <br />
+                <b>Example</b>
+                <div class="code">
+                    class MathOperations {<br />
+                        protected $n = 10;<br />
+                        <br />
+                        // Try to get the Division by Zero error object and display as Exception<br />
+                        public function doOperation(): string {<br />
+                            try {<br />
+                                $value = $this->n % 0;<br />
+                                return $value;<br />
+                            } catch (DivisionByZeroError $e) {<br />
+                                return $e->getMessage();<br />
+                            }<br />
+                        }<br />
+                    }<br />
+                    <br />
+                    $mathOperationsObj = new MathOperations();<br />
+                    print($mathOperationsObj->doOperation());<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    Modulo by zero
+                </div>
+            </p>
 
             <h2 id="intdiv">Целочислено деленe</h2>
-            <p></p>
+            <p>
+                PHP 7 introduces a new function intdiv(), which performs integer division of its operands and return the division as int.
+                <br />
+                <br />
+                <b>Example</b>
+                <div class="code">
+                    $value = intdiv(10,3);<br />
+                    var_dump($value);<br />
+                    print(" ");<br />
+                    print($value);<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    int(3)<br />
+                    3<br />
+                </div>
+            </p>
 
             <h2 id="session">Параметри на session_start()</h2>
-            <p></p>
+            <p>
+                From PHP7+, session_start() function accepts an array of options to override the session configuration directives set in php.ini. These options supports session.lazy_write, which is by default on and causes PHP to overwrite any session file if the session data has changed.
+                <br />
+                Another option added is read_and_close, which indicates that the session data should be read and then the session should immediately be closed unchanged. For example, Set session.cache_limiter to private and set the flag to close the session immediately after reading it, using the following code snippet.
+                <br />
+                <div class="code">
+                    session_start([<br />
+                        'cache_limiter' => 'private',<br />
+                        'read_and_close' => true,<br />
+                    ]);<br />
+                </div>
+            </p>
 
             <h2 id="deprecations">Неща от езика, които вече не се препоръчват да се използват</h2>
-            <p></p>
+            <p>
+                Following features are deprecated and may be removed from future releases of PHP.
+
+                <h3>PHP 4 style constructors</h3>
+                PHP 4 style Constructors are methods having same name as the class they are defined in, are now deprecated, and will be removed in the future. PHP 7 will emit E_DEPRECATED if a PHP 4 constructor is the only constructor defined within a class. Classes implementing a __construct() method are unaffected.
+                <br />
+                <br />
+                <b>Example</b>
+
+                <div class="code">
+                    class A {<br />
+                        function A() {<br />
+                            print('Style Constructor');<br />
+                        }<br />
+                    }<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    Deprecated: Methods with the same name as their class will not be constructors<br />
+                    in a future version of PHP; A has a deprecated constructor in...<br />
+                    Static calls to non-static methods<br />
+                    Static calls to non-static methods are deprecated, and may be removed in the future.<br />
+                </div>
+                <br /><br />
+                <b>Example</b>
+
+                <div class="code">
+                    class A {<br />
+                        function b() {<br />
+                            print('Non-static call');<br />
+                        }<br />
+                    }<br />
+                    A::b();<br />
+                </div>
+
+                It produces the following browser output:
+
+                <div class="code">
+                    Deprecated: Non-static method A::b() should not be called statically in...<br />
+                    Non-static call<br />
+                </div>
+                <h3>password_hash() salt option</h3>
+                The salt option for the password_hash() function has been deprecated so that the developers do not generate their own (usually insecure) salts. The function itself generates a cryptographically secure salt, when no salt is provided by the developer - thus custom salt generation is not required any more.<br />
+
+                <h3>capture_session_meta SSL context option</h3>
+                The capture_session_meta SSL context option has been deprecated. SSL metadata is now used through the stream_get_meta_data() function.
+            </p>
 
             <h2 id="removed">Премахнати неща от езика</h2>
-            <p></p>
+            <p>
+                Following Extensions have been removed from PHP 7 onwards:
+
+                <ul>
+                    <li>ereg</li>
+                    <li>mssql</li>
+                    <li>mysql</li>
+                    <li>sybase_ct</li>
+                </ul>
+
+                Following SAPIs have been removed from PHP 7 onwards:
+
+                <ul>
+                    <li>aolserver</li>
+                    <li>apache</li>
+                    <li>apache_hooks</li>
+                    <li>apache2filter</li>
+                    <li>caudium</li>
+                    <li>continuity</li>
+                    <li>sapi</li>
+                    <li>milter</li>
+                    <li>nsapi</li>
+                    <li>phttpd</li>
+                    <li>pi3web</li>
+                    <li>roxen</li>
+                    <li>thttpd</li>
+                    <li>tux</li>
+                    <li>webjames</li>
+                </ul>
+            </p>
 
             <hr />
 

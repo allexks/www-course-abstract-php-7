@@ -14,7 +14,7 @@
             <h2>Що е PHP и какви версии има?</h2>
 
             <p>
-                PHP е скриптов език върху сървърната страна и е език с отворен код, който е проектиран единствено за уеб програмиране, като това го прави широко използван за създаване на сървърни приложения.<br />
+                PHP е скриптов език, изпълним върху сървърната страна и е език с отворен код, който е проектиран единствено за уеб програмиране, като това го прави широко използван за създаване на сървърни приложения.<br />
                 Първата му версия е пусната на 8 юни 1995г. под името "Personal Home Page Tools (PHP Tools)". Следващите мажорни версии са 2.0 (1 ноември 1997г.), 3.0 (6 юни 1998г.), 4.0 (22 май 2000г.), 5.0 (13 юли 2004г.) и 7.0 (3 декември 2015г.) (заб.: не съществува РНР 6.х) <br />
                 PHP 7 се счита за най-значимата версия на езика след пускането на РНР 5 през 2004г. Датата, на която официално е публикувана новата 7.0 версия е 3 декември 2015г., като оттогава са излезли 4 по-големи версии на езика - от 7.1 на 1 декември 2016г. до 7.4 на 28 ноември 2019г. Следващата голяма планирана версия е 8.0 като се очаква да бъде пусната в края на 2020г. или началото на 2021г.
             </p>
@@ -47,7 +47,7 @@
 
             <h2 id="performance">Време за изпълнение на кода и подобрения</h2>
             <p>
-                Следните илюстрации показват производителността на PHP 7 спрямо PHP 5.6 и HHVM 3.7 на попълярни PHP-базирани приложения.
+                Следните илюстрации показват производителността на PHP 7 спрямо PHP 5.6 и HHVM 3.7 на популярни PHP-базирани приложения.
 
                 <h3>Magento 1.9</h3>
                 PHP 7 показва, че е два пъти по-бърз спрямо PHP 5.6, изпълнявайки Magento транзакции.
@@ -67,13 +67,13 @@
 
             <h2 id="scalar">Деклариране на скаларни типове</h2>
             <p>
-                In PHP 7, a new feature, Scalar type declarations, has been introduced. Scalar type declaration has two options:<br />
+                В PHP 7 бе въведена нова функционалност, наречена "скаларни типове". Тези типове имат две опции:<br />
                 <ol>
-                    <li>coercive - coercive is default mode and need not to be specified.</li>
-                    <li>strict - strict mode has to explicitly hinted.</li>
+                    <li><b>coercive</b> - това е опцията по подразбиране.</li>
+                    <li><b>strict</b> - стриктен режим, който експлицитно трябва да се обяви.</li>
                 </ol>
 
-                Following types for function parameters can be enforced using the above modes:
+                Следните типове за параметри на функции могат да бъдат въведени, използвайки горепосочените опции:
                 <ul>
                     <li>int</li>
                     <li>float</li>
@@ -84,7 +84,7 @@
                     <li>callable</li>
                 </ul>
 
-                <b>Example - Coercive Mode</b>
+                <b>Пример - Coercive режим</b>
 
                 <div class="code">
                     // Coercive mode <br />
@@ -94,12 +94,12 @@
                     print(sum(2, '3', 4.1));<br />
                 </div>
 
-                It produces the following browser output:<br />
+                Примерът ще произведе следния изход в браузъра:<br />
                 <div class="code">
                     9
                 </div>
 
-                <b>Example - Strict Mode</b>
+                <b>Пример - Strict режим</b>
                 <div class="code">
                     // Strict mode<br />
                     declare(strict_types=1);<br />
@@ -109,7 +109,7 @@
                     print(sum(2, '3', 4.1));<br />
                 </div>
 
-                It produces the following browser output:<br />
+                Примерът ще произведе следния изход в браузъра:<br />
 
                 <div class="code">
                     Fatal error: Uncaught TypeError: Argument 2 passed to sum() must be of the type integer, string given, ...
@@ -118,19 +118,19 @@
 
             <h2 id="return">Деклариране на тип на функция</h2>
             <p>
-                In PHP 7, a new feature, Return type declarations has been introduced. Return type declaration specifies the type of value that a function should return.<br />
-                Following types for return types can be declared:
+                В PHP 7 бе добавена функционалност, която позволява да се обозначи типът на стойността, която дадена функция може да върне.<br />
+                Функциите могат да бъдат от следните типове:
                 <ul>
                     <li>int</li>
                     <li>float</li>
                     <li>bool</li>
                     <li>string</li>
-                    <li>nterfaces</li>
+                    <li>interfaces</li>
                     <li>array</li>
                     <li>callable</li>
                 </ul>
 
-                <b>Example - Valid Return Type</b>
+                <b>Пример - валиден тип</b>
 
                 <div class="code">
                     declare(strict_types = 1);<br />
@@ -140,12 +140,12 @@
                     print(returnIntValue(5));<br />
                 </div>
 
-                It produces the following browser output:<br />
+                Примерът ще произведе следния изход в браузъра:<br />
                 <div class="code">
                     5
                 </div>
 
-                <b>Example - Invalid Return Type</b>
+                <b>Пример - невалиден тип</b>
 
                 <div class="code">
                     declare(strict_types = 1);<br />
@@ -155,7 +155,7 @@
                     print(returnIntValue(5));<br />
                 </div>
 
-                It produces the following browser output:<br />
+                Примерът ще произведе следния изход в браузъра:<br />
 
                 <div class="code">
                     Fatal error: Uncaught TypeError: Return value of returnIntValue() must be of the type integer, float returned...
@@ -164,10 +164,10 @@
 
             <h2 id="null">Оператор за null проверка</h2>
             <p>
-                In PHP 7, a new feature, null coalescing operator (??) has been introduced. It is used to replace the ternary operation in conjunction with isset() function. The Null coalescing operator returns its first operand if it exists and is not NULL; otherwise it returns its second operand.
+                В РНР 7 бе доабвен операторът "??". Неговата цел е да замени "идиомът", състоящ се от тернарния оператор и функцията isset(). Новият оператор връща първия си операнд, ако съществува и не е NULL. В противен случай връща втория си операнд.
                 <br />
                 <br />
-                <b>Example:</b>
+                <b>Пример:</b>
                 <div class="code">
                     // fetch the value of $_GET['user'] and returns 'not passed'<br />
                     // if username is not passed<br />
@@ -184,7 +184,7 @@
                     print($username);<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
                 <div class="code">
                     not passed<br />
                     not passed<br />
@@ -194,10 +194,10 @@
 
             <h2 id="spaceship">Оператор "космически кораб"</h2>
             <p>
-                In PHP 7, a new feature, spaceship operator has been introduced. It is used to compare two expressions. It returns -1, 0 or 1 when first expression is respectively less than, equal to, or greater than second expression.
+                В РНР 7 бе добавен операторът "<=>", по-известен като "космическият кораб". Използва се за сравнение на два израза. Връща -1, 0 or 1 в зависимост от това дали първият израз е респ. по-малък от, равен на или по-голям от втория израз.
                 <br />
                 <br />
-                <b>Example:</b>
+                <b>Пример:</b>
                 <div class="code">
                     //integer comparison<br />
                     print( 1 <=> 1);print("&lt;br /&gt;");<br />
@@ -215,7 +215,7 @@
                     print( "b" <=> "a");print("&lt;br /&gt;");<br />
                 </div>
 
-                It produces the following browser output:<br />
+                Примерът ще произведе следния изход в браузъра:<br />
 
                 <div class="code">
                     0<br />
@@ -234,10 +234,10 @@
 
             <h2 id="const">Масиви, които са константи</h2>
             <p>
-                Array constants can now be defined using the define() function. In PHP 5.6, they could only be defined using const keyword.
+                Вече могат да се създават константни масиви чрез функцията define(). В PHP 5.6 те можеха да се образуват само чрез ключовата дума "const".
                 <br />
                 <br />
-                <b>Example:</b>
+                <b>Пример:</b>
                 <div class="code">
                     //define a array using define function<br />
                     define('animals', [<br />
@@ -248,7 +248,7 @@
                     print(animals[1]);<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     cat
@@ -257,10 +257,10 @@
 
             <h2 id="anon">Анонимни класове</h2>
             <p>
-                Anonymous classes can now be defined using new class. Anonymous class can be used in place of a full class definition.
+                Анонимни класове могат да се създават чрез "new class".
                 <br />
                 <br />
-                <b>Example:</b>
+                <b>Пример:</b>
                 <div class="code">
                     interface Logger {<br />
                         public function log(string $msg);<br />
@@ -288,7 +288,7 @@
                     $app->getLogger()->log("My first Log Message");<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     My first Log Message
@@ -297,10 +297,10 @@
 
             <h2 id="closure">Closure::call()</h2>
             <p>
-                Closure::call() method is added as a shorthand way to temporarily bind an object scope to a closure and invoke it. It is much faster in performance as compared to bindTo of PHP 5.6.
+                Методът Closure::call() е добавен като кратък начин за временно свързане на обхват на обект с closure и неговото изпълнение. Много по-бърз е в сравнение с bindTo на PHP 5.6.
                 <br />
                 <br />
-                <b>Example - Pre PHP 7</b>
+                <b>Пример - Pre PHP 7</b>
                 <div class="code">
                     class A {<br />
                         private $x = 1;<br />
@@ -311,19 +311,19 @@
                         return $this->x;<br />
                     };<br />
                     <br />
-                    // Bind a clousure<br />
+                    // Bind a closure<br />
                     $value = $getValue->bindTo(new A, 'A');<br />
                     <br />
                     print($value());<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     1
                 </div>
 
-                <b>Example - PHP 7+</b>
+                <b>Пример - PHP 7+</b>
                 <div class="code">
                     class A {<br />
                         private $x = 1;<br />
@@ -337,7 +337,7 @@
                     print($value->call(new A));<br />
                 </div>
 
-                It produces the following browser output −
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     1
@@ -346,10 +346,10 @@
 
             <h2 id="unserialize">Филтриран unserialize</h2>
             <p>
-                PHP 7 introduces Filtered unserialize() function to provide better security when unserializing objects on untrusted data. It prevents possible code injections and enables the developer to whitelist classes that can be unserialized.
+                PHP 7 добавя филтрирана функция unserialize(), за да осигури по-добра защита при десериализация на обекти с данни, на които можем да нямаме доверие. Предотвратява възможни инжекции на код и позволява на програмиста да укаже кои класове могат да бъдат сериализирани и кои - не.
                 <br />
                 <br />
-                <b>Example</b>
+                <b>Пример</b>
                 <div class="code">
                     class MyClass1 {<br />
                         public $obj1prop;<br />
@@ -379,7 +379,7 @@
                     print($data2->obj2prop);<br />
                 </div>
 
-                It produces the following browser output:<br />
+                Примерът ще произведе следния изход в браузъра:<br />
 
                 <div class="code">
                     1<br />
@@ -389,17 +389,17 @@
 
             <h2 id="char">IntlChar</h2>
             <p>
-                In PHP7, a new IntlChar class is added, which seeks to expose additional ICU functionality. This class defines a number of static methods and constants, which can be used to manipulate unicode characters. You need to have Intl extension installed prior to using this class.
+                В PHP7 бе добавен нов клас, наречен "IntlChar", който има за цел да изложи допълнителна ICU функционалност. Този клас дефинира множество статични методи и константи, които могат да бъдат използвани при манипулация на Unicode символи. Трябва да имате Intl разширанието преди изполването на този клас.
                 <br />
                 <br />
-                <b>Example</b>
+                <b>Пример</b>
                 <div class="code">
                     printf('%x', IntlChar::CODEPOINT_MAX);<br />
                     print (IntlChar::charName('@'));<br />
                     print(IntlChar::ispunct('!'));<br />
                 </div>
 
-                It produces the following browser output:<br />
+                Примерът ще произведе следния изход в браузъра:<br />
 
                 <div class="code">
                     10ffff
@@ -410,76 +410,76 @@
 
             <h2 id="csprng">CSPRNG</h2>
             <p>
-                In PHP 7, following two new functions are introduced to generate cryptographically secure integers and strings in a cross platform way.
+                В PHP 7 бяха добавени следните 2 нови функции за създаването на криптографски-защитени цели числа и символни низове по крос-платформен начин.
                 <br />
                 <ul>
-                    <li>random_bytes() − Generates cryptographically secure pseudo-random bytes.</li>
-                    <li>random_int() − Generates cryptographically secure pseudo-random integers.</li>
+                    <li>random_bytes() − Генерира криптографски-защитени псевдо-случайни байтове.</li>
+                    <li>random_int() − Генерира криптографски-защитени псевдо-случайни цели числа.</li>
                 </ul>
                 <h3>random_bytes()<h3/>
-                random_bytes() generates an arbitrary-length string of cryptographic random bytes that are suitable for cryptographic use, such as when generating salts, keys or initialization vectors.
+                random_bytes() генерира низ с произволна дължина от криптографски случайни байтове, които са подходящи за криптографска употреба, като например генериране на "salts", ключове или инициализиращи вектори.
 
-                <h4>Syntax</h4>
+                <h4>Синтаксис</h4>
                 <div class="code">
                     string random_bytes ( int $length )
                 </div>
 
-                <h4>Parameters</h4>
-                <i>length</i> − The length of the random string that should be returned in bytes.
+                <h4>Параметри</h4>
+                <i>length</i> − дължината в байтове на случайния низ, който да бъде върнат.
 
-                <h4>Return Values</h4>
-                Returns a string containing the requested number of cryptographically secure random bytes.
+                <h4>Връща</h4>
+                Връща поискания низ, съдържащ криптографски-защитените псевдо-случайно байтове.
 
-                <h4>Errors/Exceptions</h4>
-                If an appropriate source of randomness cannot be found, an Exception will be thrown.<br />
+                <h4>Грешки />Изключения</h4>
+                Ако подходящ източник на случайност не може да бъде установен, ще бъде хвърлена грешка от тип Exception.<br />
 
-                If invalid parameters are given, a TypeError will be thrown.<br />
+                Ако параметрите са невалидни, ще бъде хвърлена грешка от тип TypeError.<br />
 
-                If an invalid length of bytes is given, an Error will be thrown.<br /><br />
+                Ако е подадена невалидна дължина от байтове, ще бъде хвърлена грешка от тип Error.<br /><br />
 
-                <b>Example</b>
+                <b>Пример</b>
                 <div class="code">
                     $bytes = random_bytes(5);<br />
                     print(bin2hex($bytes));<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     54cc305593
                 </div>
 
                 <h3>random_int()</h3>
-                random_int() generates cryptographic random integers that are suitable for use where unbiased results are critical.
+                random_int() генерира псевдо-случайно цели числа, подходящи за ситуации, в които са критични безпристрастните резултати.
 
-                <h4>Syntax</h4>
+                <h4>Синтаксис</h4>
                 <div class="code">
                     int random_int ( int $min , int $max )
                 </div>
 
-                <h4>Parameters</h4>
-                <i>min</i> − The lowest value to be returned, which must be PHP_INT_MIN or higher.<br />
+                <h4>Параметри</h4>
+                <i>min</i> − най-малкото число, което може да бъде върнато; трябва да е PHP_INT_MIN или по-голямо.<br />
 
-                <i>max</i> - The highest value to be returned, which must be less than or equal to PHP_INT_MAX.
+                <i>max</i> - най-голямото число, което може да бъде върнато, трябва да е по-малко или равно на PHP_INT_MAX.
 
-                <h4>Return Values</h4>
-                Returns a cryptographically secure random integer in the range min to max, inclusive.
+                <h4>Връща</h4>
+                Връща криптографски-защитено псевдо-случайно цяло число в интервала от min до max, включително.
 
-                <h4>Errors/Exceptions</h4>
-                If an appropriate source of randomness cannot be found, an Exception will be thrown.<br />
+                <h4>Грешки/Изключения</h4>
+                Ако подходящ източник на случайност не може да бъде установен, ще бъде хвърлена грешка от тип Exception.<br />
 
-                If invalid parameters are given, a TypeError will be thrown.<br />
+                Ако параметрите са невалидни, ще бъде хвърлена грешка от тип TypeError.<br />
 
-                If max is less than min, an Error will be thrown.<br /><br />
+                Ако max е по-малко от min, ще бъде хвърлена грешка от тип Error.<br /><br />
 
-                <b>Example</b>
+                <b>Пример</b>
                 <div class="code">
                     print(random_int(100, 999));<br />
                     print("");<br />
                     print(random_int(-1000, 0));<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     614<br />
@@ -489,10 +489,10 @@
 
             <h2 id="use">Use изрази</h2>
             <p>
-                From PHP7 onwards, a single use statement can be used to import Classes, functions and constants from same namespace instead of multiple use statements.
+                С РНР 7, един единствен израз може да бъде използван за импортиране на класове, функции и константи от едно и също пространство от имена (namespace).
                 <br />
                 <br />
-                <b>Example</b>
+                <b>Пример</b>
 
                 <div class="code">
                     // Before PHP 7<br />
@@ -517,14 +517,14 @@
 
             <h2 id="error">Обработване на грешки</h2>
             <p>
-                From PHP 7, error handling and reporting has been changed. Instead of reporting errors through the traditional error reporting mechanism used by PHP 5, now most errors are handled by throwing Error exceptions. Similar to exceptions, these Error exceptions bubble up until they reach the first matching catch block. If there are no matching blocks, then a default exception handler installed with set_exception_handler() will be called. In case there is no default exception handler, then the exception will be converted to a fatal error and will be handled like a traditional error.<br />
+                В РНР 7 бе променен начина на обработване на грешки и изключения. Вместо докладването на грешки по традиционния за това начин, изполван от РНР 5, сега повечето грешки се обработват чрез хвърлянето на грешки (Еrror). Подобно на изключенията, тези грешки Error се придвижват "нагоре" по стека, докато достигат подходящ блок код, който ги обработва. Ако няма такъв, тогава се извиква обработвач на изключения, зададен по подразбиране чрез set_exception_handler().
+                В този случай когато няма такъв, тогава грешката се преобразува във фатална такава и бива обработвана като традиционна грешка.<br />
 
-                As the Error hierarchy is not extended from Exception, code that uses catch (Exception $e) { ... } blocks to handle uncaught exceptions in PHP 5 will not handle such errors. A catch (Error $e) { ... } block or a set_exception_handler() handler is required to handle fatal errors.
+                Тъй като Error не наследява Exception, код, който използва catch (Exception $e) { ... } блокове за да прихване изключения в PHP 5 няма да обработи такива грешки. Нужен еcatch (Error $e) { ... } блок или set_exception_handler() за тази цел.
                 <br />
-                Exception Hierarchy
-                <img />
+                <img src="https://www.tutorialspoint.com/php7/images/exception_hierarchy.jpg" alt="Throwable hierarchy"/>
                 <br />
-                <b>Example</b>
+                <b>Пример</b>
                 <div class="code">
                     class MathOperations {<br />
                         protected $n = 10;<br />
@@ -544,7 +544,7 @@
                     print($mathOperationsObj->doOperation());<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     Modulo by zero
@@ -553,10 +553,10 @@
 
             <h2 id="intdiv">Целочислено деленe</h2>
             <p>
-                PHP 7 introduces a new function intdiv(), which performs integer division of its operands and return the division as int.
+                PHP 7 въвежда нова функция intdiv(), която изпълнява целочислено деление и връща резултата като int.
                 <br />
                 <br />
-                <b>Example</b>
+                <b>Пример</b>
                 <div class="code">
                     $value = intdiv(10,3);<br />
                     var_dump($value);<br />
@@ -564,7 +564,7 @@
                     print($value);<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     int(3)<br />
@@ -574,9 +574,8 @@
 
             <h2 id="session">Параметри на session_start()</h2>
             <p>
-                From PHP7+, session_start() function accepts an array of options to override the session configuration directives set in php.ini. These options supports session.lazy_write, which is by default on and causes PHP to overwrite any session file if the session data has changed.
-                <br />
-                Another option added is read_and_close, which indicates that the session data should be read and then the session should immediately be closed unchanged. For example, Set session.cache_limiter to private and set the flag to close the session immediately after reading it, using the following code snippet.
+                В PHP7+, функцията session_start() масив от опции, които са с приоритет пред директивите за конфигурация на сесията, зададени в php.ini. Тези опции поддържат session.lazy_write, което е включено по подразбиране и кара PHP да презапише който и да е сесиен файл, ако данните за сесията са се променили.
+                Друга добавена опция е read_and_close, която показва, че данните от сесията трябва да бъдат прочетени и след това сесията трябва да бъде веднага затворена непроменена. Например, задайте session.cache_limiter да бъде частен и дайте стойност на флага за затваряне на сесията веднага след четенето ѝ, изполвайки следното парче код:
                 <br />
                 <div class="code">
                     session_start([<br />
@@ -588,13 +587,13 @@
 
             <h2 id="deprecations">Неща от езика, които вече не се препоръчват да се използват</h2>
             <p>
-                Following features are deprecated and may be removed from future releases of PHP.
+                Следните функционалности и конструкции за маркирани като "deprecated" и могат да бъдат премахнати в следващи версии на PHP.
 
-                <h3>PHP 4 style constructors</h3>
-                PHP 4 style Constructors are methods having same name as the class they are defined in, are now deprecated, and will be removed in the future. PHP 7 will emit E_DEPRECATED if a PHP 4 constructor is the only constructor defined within a class. Classes implementing a __construct() method are unaffected.
+                <h3>Конструктори в стил РНР 4</h3>
+                Това са конструктори, използващи името на класа като собствено; ще бъдат премахнати в някоя следваща версия на езика. PHP 7 издава E_DEPRECATED ако такъв конструктор е единственият дефиниран такъв в някой клас. Каловете, имплементиращи методът __construct() не са афектирани.
                 <br />
                 <br />
-                <b>Example</b>
+                <b>Пример</b>
 
                 <div class="code">
                     class A {<br />
@@ -604,7 +603,7 @@
                     }<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     Deprecated: Methods with the same name as their class will not be constructors<br />
@@ -613,7 +612,7 @@
                     Static calls to non-static methods are deprecated, and may be removed in the future.<br />
                 </div>
                 <br /><br />
-                <b>Example</b>
+                <b>Пример</b>
 
                 <div class="code">
                     class A {<br />
@@ -624,22 +623,22 @@
                     A::b();<br />
                 </div>
 
-                It produces the following browser output:
+                Примерът ще произведе следния изход в браузъра:
 
                 <div class="code">
                     Deprecated: Non-static method A::b() should not be called statically in...<br />
                     Non-static call<br />
                 </div>
-                <h3>password_hash() salt option</h3>
-                The salt option for the password_hash() function has been deprecated so that the developers do not generate their own (usually insecure) salts. The function itself generates a cryptographically secure salt, when no salt is provided by the developer - thus custom salt generation is not required any more.<br />
+                <h3>password_hash() salt опция</h3>
+                Опцията за salt на функцията password_hash() не се препоръчва за изполване, за да не генерират разработчиците свои (обикновено несигурни) salts. Самата функция генерира криптографски силна salt, когато няма такава подадена от програмиста.<br />
 
-                <h3>capture_session_meta SSL context option</h3>
-                The capture_session_meta SSL context option has been deprecated. SSL metadata is now used through the stream_get_meta_data() function.
+                <h3>capture_session_meta SSL context опция</h3>
+                Опцията SSL на capture_session_meta не се препоръчва да се използва повече. SSL метаданни сега се изполват чрез функцията stream_get_meta_data().
             </p>
 
             <h2 id="removed">Премахнати неща от езика</h2>
             <p>
-                Following Extensions have been removed from PHP 7 onwards:
+                Следните разширения са премахнати от РНР 7+:
 
                 <ul>
                     <li>ereg</li>
@@ -648,7 +647,7 @@
                     <li>sybase_ct</li>
                 </ul>
 
-                Following SAPIs have been removed from PHP 7 onwards:
+                Следните SAPI са премахнати от PHP 7+:
 
                 <ul>
                     <li>aolserver</li>
@@ -669,6 +668,16 @@
                 </ul>
             </p>
 
+            <hr />
+
+            <h1>Библиография</h1>
+            <ol>
+                <li>https://medium.com/oceanize-geeks/introduce-new-features-in-php-7-8a2f9926e1f9</li>
+                <li>https://www.startutorial.com/articles/view/5-new-features-in-php-7-that-you-should-have-a-look-at</li>
+                <li>https://www.php.net/manual/en/migration70.new-features.php</li>
+                <li>https://www.tutorialspoint.com/php7/index.htm</li>
+                <li>https://en.wikipedia.org/wiki/PHP#Release_history</li>
+            </ol>
             <hr />
 
             <h6>Copyright (c) 2020 Alexander Ignatov&lt;yalishanda@abv.bg&gt; All Rights Reserved.</h6>

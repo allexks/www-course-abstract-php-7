@@ -3,12 +3,154 @@
     <head>
         <meta charset="utf-8">
         <title>69. PHP 7+</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body>
-        <h1>69. PHP 7+</h1>
+        <div id="container">
+            <h1>69. PHP 7+</h1>
+            <hr />
 
-        <h2>Що е PHP и какви версии има?</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Що е PHP и какви версии има?</h2>
+            <p>PHP 7 is a major release of PHP programming language and is touted to be a revolution in the way web applications can be developed and delivered for mobile to enterprises and the cloud. This release is considered to be the most important change for PHP after the release of PHP 5 in 2004.</p>
+
+            <h2>Новите неща в PHP</h2>
+            <p>
+                PHP 7 uses new Zend Engine 3.0 to improve application performance almost twice and 50% better memory consumption than PHP 5.6. It allows to serve more concurrent users without requiring any additional hardware. PHP 7 is designed and refactored considering today's workloads.
+                <br />
+                There are dozens of features added to PHP 7, the most significant ones are mentioned below:
+                <ul>
+                    <li>Improved performance − Having PHPNG code merged in PHP7, it is twice as fast as PHP 5.</li>
+                    <li>Lower Memory Consumption − Optimized PHP 7 utilizes lesser resource.</li>
+                    <li>Scalar type declarations − Now parameter and return types can be enforced.</li>
+                    <li>Consistent 64-bit support − Consistent support for 64-bit architecture machines.</li>
+                    <li>Improved Exception hierarchy − Exception hierarchy is improved.</li>
+                    <li>Many fatal errors converted to Exceptions − Range of exceptions is increased covering many fatal error converted as exceptions.</li>
+                    <li>Secure random number generator − Addition of new secure random number generator API.</li>
+                    <li>Deprecated SAPIs and extensions removed − Various old and unsupported SAPIs and extensions are removed from the latest version.</li>
+                    <li>The null coalescing operator (??) − New null coalescing operator added.</li>
+                    <li>Return and Scalar Type Declarations − Support for return type and parameter type added.</li>
+                    <li>Anonymous Classes − Support for anonymous added.</li>
+                    <li>Zero cost asserts − Support for zero cost assert added.</li>
+                </ul>
+            </p>
+
+            <h2 id="performance">Време за изпълнение на кода и подобрения</h2>
+            <p>
+                As per the Zend team, following illustrations show the performance comparison of PHP 7 vs PHP 5.6 and HHVM 3.7 on popular PHP based applications.
+                <br />
+                Magento 1.9
+                PHP 7 proves itself more than twice as faster, as compared to PHP 5.6 while executing Magento transactions.
+                <br />
+                Magento Transactions
+                Drupal 7
+                PHP 7 proves itself more than twice as faster, as compared to PHP 5.6 while executing Drupal transactions.
+                <br />
+                Drupal Transactions
+                Wordpress 3.6
+                PHP 7 proves itself more than twice as faster as compared to PHP 5.6 while executing Wordpress transactions.
+                <br />
+                Wordpress Transactions
+                Comparison of Dynamic Languages
+                Mandelbrot Transactions
+            </p>
+
+            <h2 id="scalar">Деклариране на скаларни типове</h2>
+            <p>
+                In PHP 7, a new feature, Scalar type declarations, has been introduced. Scalar type declaration has two options −
+
+                coercive - coercive is default mode and need not to be specified.
+
+                strict - strict mode has to explicitly hinted.
+
+                Following types for function parameters can be enforced using the above modes −
+
+                int
+                float
+                bool
+                string
+                interfaces
+                array
+                callable
+                Example - Coercive Mode
+                <div class="code">
+                    // Coercive mode <br />
+                    function sum(int ...$ints) {<br />
+                        return array_sum($ints);<br />
+                    }<br />
+                    print(sum(2, '3', 4.1));<br />
+                </div>
+
+                It produces the following browser output − <br />
+                <div class="code">
+                    9
+                </div>
+
+                Example - Strict Mode
+                <div class="code">
+                    // Strict mode<br />
+                    declare(strict_types=1);<br />
+                    function sum(int ...$ints) {<br />
+                        return array_sum($ints);<br />
+                    }<br />
+                    print(sum(2, '3', 4.1));<br />
+                </div>
+
+                It produces the following browser output − <br />
+
+                <div class="code">
+                    Fatal error: Uncaught TypeError: Argument 2 passed to sum() must be of the type integer, string given, ...
+                </div>
+            </p>
+
+            <h2 id="return">Деклариране на тип на функция</h2>
+            <p></p>
+
+            <h2 id="null">Оператор за null проверка</h2>
+            <p></p>
+
+            <h2 id="spaceship">Оператор "космически кораб"</h2>
+            <p></p>
+
+            <h2 id="const">Масиви, които са константи</h2>
+            <p></p>
+
+            <h2 id="anon">Анонимни класове</h2>
+            <p></p>
+
+            <h2 id="closure">Closure::call()</h2>
+            <p></p>
+
+            <h2 id="unserialize">Филтриран unserialize</h2>
+            <p></p>
+
+            <h2 id="char">IntlChar</h2>
+            <p></p>
+
+            <h2 id="csprng">CSPRNG</h2>
+            <p></p>
+
+            <h2 id="use">Use изрази</h2>
+            <p></p>
+
+            <h2 id="error">Обработване на грешки</h2>
+            <p></p>
+
+            <h2 id="intdiv">Целочислено деленe</h2>
+            <p></p>
+
+            <h2 id="session">Параметри на session_start()</h2>
+            <p></p>
+
+            <h2 id="deprecations">Неща от езика, които вече не се препоръчват да се използват</h2>
+            <p></p>
+
+            <h2 id="removed">Премахнати неща от езика</h2>
+            <p></p>
+
+            <hr />
+
+            <h6>Copyright (c) 2020 Alexander Ignatov&lt;yalishanda@abv.bg&gt; All Rights Reserved.</h6>
+        </div>
     </body>
 </html>

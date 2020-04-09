@@ -1,3 +1,25 @@
-body {
-    
+#container {
+    width: 69%;
+    margin: auto;
+    padding: 0px 69px;
+    border: solid #32a1ce;
+    border-radius: 42px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+#container p {
+    text-align: left;
+}
+
+.code {
+    font-family: monospace;
+    background-color: #eee;
+    border: solid #aaa;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin: 10px 0px 20px;
+    clear: both;
 }

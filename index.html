@@ -12,47 +12,57 @@
             <hr />
 
             <h2>Що е PHP и какви версии има?</h2>
-            <p>PHP 7 is a major release of PHP programming language and is touted to be a revolution in the way web applications can be developed and delivered for mobile to enterprises and the cloud. This release is considered to be the most important change for PHP after the release of PHP 5 in 2004.</p>
 
-            <h2>Новите неща в PHP 7</h2>
             <p>
-                PHP 7 uses new Zend Engine 3.0 to improve application performance almost twice and 50% better memory consumption than PHP 5.6. It allows to serve more concurrent users without requiring any additional hardware. PHP 7 is designed and refactored considering today's workloads.
+                PHP е скриптов език върху сървърната страна и е език с отворен код, който е проектиран единствено за уеб програмиране, като това го прави широко използван за създаване на сървърни приложения.<br />
+                Първата му версия е пусната на 8 юни 1995г. под името "Personal Home Page Tools (PHP Tools)". Следващите мажорни версии са 2.0 (1 ноември 1997г.), 3.0 (6 юни 1998г.), 4.0 (22 май 2000г.), 5.0 (13 юли 2004г.) и 7.0 (3 декември 2015г.) (заб.: не съществува РНР 6.х) <br />
+                PHP 7 се счита за най-значимата версия на езика след пускането на РНР 5 през 2004г. Датата, на която официално е публикувана новата 7.0 версия е 3 декември 2015г., като оттогава са излезли 4 по-големи версии на езика - от 7.1 на 1 декември 2016г. до 7.4 на 28 ноември 2019г. Следващата голяма планирана версия е 8.0 като се очаква да бъде пусната в края на 2020г. или началото на 2021г.
+            </p>
+
+            <h2>Новите неща в PHP 7 (Съдържание)</h2>
+            <p>
+                PHP 7 използва новия Zend Engine 3.0 за да подобри производителността почти двойно и да постигне с 50% по-добра консумация на памет в сравнение с PHP 5.6. Позволява обслужването на повече потребители едновременно без необходимостта от допълнителен хардуер. PHP 7 включва и консистента поддръжка на машини 64-битови архитектури.
                 <br />
-                There are dozens of features added to PHP 7, the most significant ones are mentioned below:
+                PHP 7 влага много новости в езика, като най-важните са следните:
                 <ul>
-                    <li>Improved performance − Having PHPNG code merged in PHP7, it is twice as fast as PHP 5.</li>
-                    <li>Lower Memory Consumption − Optimized PHP 7 utilizes lesser resource.</li>
-                    <li>Scalar type declarations − Now parameter and return types can be enforced.</li>
-                    <li>Consistent 64-bit support − Consistent support for 64-bit architecture machines.</li>
-                    <li>Improved Exception hierarchy − Exception hierarchy is improved.</li>
-                    <li>Many fatal errors converted to Exceptions − Range of exceptions is increased covering many fatal error converted as exceptions.</li>
-                    <li>Secure random number generator − Addition of new secure random number generator API.</li>
-                    <li>Deprecated SAPIs and extensions removed − Various old and unsupported SAPIs and extensions are removed from the latest version.</li>
-                    <li>The null coalescing operator (??) − New null coalescing operator added.</li>
-                    <li>Return and Scalar Type Declarations − Support for return type and parameter type added.</li>
-                    <li>Anonymous Classes − Support for anonymous added.</li>
-                    <li>Zero cost asserts − Support for zero cost assert added.</li>
+                    <li><a href="#performance">Подобрена производителност</a> − Имайки кода на PHPNG, PHP 7 е двойно по-бърз от PHP 5.</li>
+                    <li><a href="#scalar">Деклариране на типове на параметри</a></li>
+                    <li><a href="#return">Деклариране на типове на функции</a></li>
+                    <li><a href="#null">Оператор за null проверка (null-coalescing operator) (??)</a></li>
+                    <li><a href="#spaceship">Оператор "космически кораб"</a></li>
+                    <li><a href="#const">Масиви, които са константи</a></li>
+                    <li><a href="#anon">Анонимни класове</a></li>
+                    <li><a href="#closure">Closure::call()</a></li>
+                    <li><a href="#unserialize">Филтриран unserialize</a></li>
+                    <li><a href="#char">IntlChar</a></li>
+                    <li><a href="#csprng">CSPRNG</a></li>
+                    <li><a href="#use">Use изрази</a></li>
+                    <li><a href="#error">Обработване на грешки</a></li>
+                    <li><a href="#intdiv">Целочислено деленe</a></li>
+                    <li><a href="#session">Параметри на session_start()</a></li>
+                    <li><a href="#deprecations">Неща от езика, които вече не се препоръчват да се използват (понеже се планира премахването им)</a></li>
+                    <li><a href="#removed">Премахнати неща от езика</a></li>
                 </ul>
             </p>
 
             <h2 id="performance">Време за изпълнение на кода и подобрения</h2>
             <p>
-                As per the Zend team, following illustrations show the performance comparison of PHP 7 vs PHP 5.6 and HHVM 3.7 on popular PHP based applications.
-                <br />
-                Magento 1.9
-                PHP 7 proves itself more than twice as faster, as compared to PHP 5.6 while executing Magento transactions.
-                <br />
-                Magento Transactions
-                Drupal 7
-                PHP 7 proves itself more than twice as faster, as compared to PHP 5.6 while executing Drupal transactions.
-                <br />
-                Drupal Transactions
-                Wordpress 3.6
-                PHP 7 proves itself more than twice as faster as compared to PHP 5.6 while executing Wordpress transactions.
-                <br />
-                Wordpress Transactions
-                Comparison of Dynamic Languages
-                Mandelbrot Transactions
+                Следните илюстрации показват производителността на PHP 7 спрямо PHP 5.6 и HHVM 3.7 на попълярни PHP-базирани приложения.
+
+                <h3>Magento 1.9</h3>
+                PHP 7 показва, че е два пъти по-бърз спрямо PHP 5.6, изпълнявайки Magento транзакции.
+                <img src="https://www.tutorialspoint.com/php7/images/magento.jpg" alt="Magento Transactions" />
+
+                <h3>Drupal 7</h3>
+                PHP 7 показва, че е два пъти по-бърз спрямо PHP 5.6, изпълнявайки Drupal транзакции.
+                <img src="https://www.tutorialspoint.com/php7/images/drupal.jpg" alt="Drupal Transactions" />
+
+                <h3>Wordpress 3.6</h3>
+                PHP 7 показва, че е два пъти по-бърз спрямо PHP 5.6, изпълнявайки Wordpress транзакции.
+                <img src="https://www.tutorialspoint.com/php7/images/wordpress.jpg" alt="Wordpress Transactions" />
+
+                <h3>Comparison of Dynamic Languages</h3>
+                <img src="https://www.tutorialspoint.com/php7/images/mandelbrot.jpg" alt="Mandelbrot Transactions" />
             </p>
 
             <h2 id="scalar">Деклариране на скаларни типове</h2>

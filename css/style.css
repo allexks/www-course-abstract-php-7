@@ -6,12 +6,23 @@
     border-radius: 42px;
 }
 
-h1, h2, h6 {
+#container img {
+    margin: auto;
+    width: 100%;
+}
+
+h1, h2, h5, h6 {
     text-align: center;
 }
 
 #container p {
     text-align: left;
+}
+
+.caption {
+    font-style: italic;
+    text-align: center;
+    color: grey;
 }
 
 .code {
@@ -20,6 +31,5 @@ h1, h2, h6 {
     border: solid #aaa;
     border-radius: 5px;
     padding: 0px 10px;
-    /* margin: 10px 0px 20px; */
     clear: both;
 }

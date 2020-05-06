@@ -19,7 +19,7 @@ h1, h2, h6 {
     background-color: #eee;
     border: solid #aaa;
     border-radius: 5px;
-    padding: 5px 10px 5px;
-    margin: 10px 0px 20px;
+    padding: 0px 10px;
+    /* margin: 10px 0px 20px; */
     clear: both;
 }

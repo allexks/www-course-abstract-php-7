@@ -86,34 +86,34 @@
 
                 <b>Пример - Coercive режим</b>
 
-                <div class="code">
-                    // Coercive mode <br />
-                    function sum(int ...$ints) {<br />
-                        return array_sum($ints);<br />
-                    }<br />
-                    print(sum(2, '3', 4.1));<br />
-                </div>
+                <pre class="code"><code>
+// Coercive mode
+function sum(int ...$ints) {
+    return array_sum($ints);
+}
+print(sum(2, '3', 4.1));
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:<br />
-                <div class="code">
-                    9
-                </div>
+                <pre class="code"><code>
+9
+                </code></pre>
 
                 <b>Пример - Strict режим</b>
-                <div class="code">
-                    // Strict mode<br />
-                    declare(strict_types=1);<br />
-                    function sum(int ...$ints) {<br />
-                        return array_sum($ints);<br />
-                    }<br />
-                    print(sum(2, '3', 4.1));<br />
-                </div>
+                <pre class="code"><code>
+// Strict mode
+declare(strict_types=1);
+function sum(int ...$ints) {
+    return array_sum($ints);
+}
+print(sum(2, '3', 4.1));
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:<br />
 
-                <div class="code">
-                    Fatal error: Uncaught TypeError: Argument 2 passed to sum() must be of the type integer, string given, ...
-                </div>
+                <pre class="code"><code>
+Fatal error: Uncaught TypeError: Argument 2 passed to sum() must be of the type integer, string given, ...
+                </code></pre>
             </p>
 
             <h2 id="return">Деклариране на тип на функция</h2>
@@ -132,34 +132,34 @@
 
                 <b>Пример - валиден тип</b>
 
-                <div class="code">
-                    declare(strict_types = 1);<br />
-                    function returnIntValue(int $value): int {<br />
-                        return $value;<br />
-                    }<br />
-                    print(returnIntValue(5));<br />
-                </div>
+                <pre class="code"><code>
+declare(strict_types = 1);
+function returnIntValue(int $value): int {
+    return $value;
+}
+print(returnIntValue(5));
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:<br />
-                <div class="code">
-                    5
-                </div>
+                <pre class="code"><code>
+5
+                </code></pre>
 
                 <b>Пример - невалиден тип</b>
 
-                <div class="code">
-                    declare(strict_types = 1);<br />
-                    function returnIntValue(int $value): int {<br />
-                        return $value + 1.0;<br />
-                    }<br />
-                    print(returnIntValue(5));<br />
-                </div>
+                <pre class="code"><code>
+declare(strict_types = 1);
+function returnIntValue(int $value): int {
+    return $value + 1.0;
+}
+print(returnIntValue(5));
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:<br />
 
-                <div class="code">
-                    Fatal error: Uncaught TypeError: Return value of returnIntValue() must be of the type integer, float returned...
-                </div>
+                <pre class="code"><code>
+Fatal error: Uncaught TypeError: Return value of returnIntValue() must be of the type integer, float returned...
+                </code></pre>
             </p>
 
             <h2 id="null">Оператор за null проверка</h2>
@@ -168,28 +168,28 @@
                 <br />
                 <br />
                 <b>Пример:</b>
-                <div class="code">
-                    // fetch the value of $_GET['user'] and returns 'not passed'<br />
-                    // if username is not passed<br />
-                    $username = $_GET['username'] ?? 'not passed';<br />
-                    print($username);<br />
-                    print("&lt;br /&gt;");<br />
-                    <br />
-                    // Equivalent code using ternary operator<br />
-                    $username = isset($_GET['username']) ? $_GET['username'] : 'not passed';<br />
-                    print($username);<br />
-                    print("&lt;br /&gt;");<br />
-                    // Chaining ?? operation<br />
-                    $username = $_GET['username'] ?? $_POST['username'] ?? 'not passed';<br />
-                    print($username);<br />
-                </div>
+                <pre class="code"><code>
+// fetch the value of $_GET['user'] and returns 'not passed'
+// if username is not passed
+$username = $_GET['username'] ?? 'not passed';
+print($username);
+print("&lt;br /&gt;");
+
+// Equivalent code using ternary operator
+$username = isset($_GET['username']) ? $_GET['username'] : 'not passed';
+print($username);
+print("&lt;br /&gt;");
+// Chaining ?? operation
+$username = $_GET['username'] ?? $_POST['username'] ?? 'not passed';
+print($username);
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
-                <div class="code">
-                    not passed<br />
-                    not passed<br />
-                    not passed<br />
-                </div>
+                <pre class="code"><code>
+not passed
+not passed
+not passed
+                </code></pre>
             </p>
 
             <h2 id="spaceship">Оператор "космически кораб"</h2>
@@ -198,38 +198,38 @@
                 <br />
                 <br />
                 <b>Пример:</b>
-                <div class="code">
-                    //integer comparison<br />
-                    print( 1 <=> 1);print("&lt;br /&gt;");<br />
-                    print( 1 <=> 2);print("&lt;br /&gt;");<br />
-                    print( 2 <=> 1);print("&lt;br /&gt;");<br />
-                    print("&lt;br /&gt;");<br />
-                    //float comparison<br />
-                    print( 1.5 <=> 1.5);print("&lt;br /&gt;");<br />
-                    print( 1.5 <=> 2.5);print("&lt;br /&gt;");<br />
-                    print( 2.5 <=> 1.5);print("&lt;br /&gt;");<br />
-                    print("&lt;br /&gt;");<br />
-                    //string comparison<br />
-                    print( "a" <=> "a");print("&lt;br /&gt;");<br />
-                    print( "a" <=> "b");print("&lt;br /&gt;");<br />
-                    print( "b" <=> "a");print("&lt;br /&gt;");<br />
-                </div>
+                <pre class="code"><code>
+//integer comparison
+print( 1 <=> 1);print("&lt;br /&gt;");
+print( 1 <=> 2);print("&lt;br /&gt;");
+print( 2 <=> 1);print("&lt;br /&gt;");
+print("&lt;br /&gt;");
+//float comparison
+print( 1.5 <=> 1.5);print("&lt;br /&gt;");
+print( 1.5 <=> 2.5);print("&lt;br /&gt;");
+print( 2.5 <=> 1.5);print("&lt;br /&gt;");
+print("&lt;br /&gt;");
+//string comparison
+print( "a" <=> "a");print("&lt;br /&gt;");
+print( "a" <=> "b");print("&lt;br /&gt;");
+print( "b" <=> "a");print("&lt;br /&gt;");
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:<br />
 
-                <div class="code">
-                    0<br />
-                    -1<br />
-                    1<br />
-                    <br />
-                    0<br />
-                    -1<br />
-                    1<br />
-                    <br />
-                    0<br />
-                    -1<br />
-                    1<br />
-                </div>
+                <pre class="code"><code>
+0
+-1
+1
+
+0
+-1
+1
+
+0
+-1
+1
+                </code></pre>
             </p>
 
             <h2 id="const">Масиви, които са константи</h2>
@@ -238,21 +238,21 @@
                 <br />
                 <br />
                 <b>Пример:</b>
-                <div class="code">
-                    //define a array using define function<br />
-                    define('animals', [<br />
-                    'dog',<br />
-                    'cat',<br />
-                    'bird'<br />
-                    ]);<br />
-                    print(animals[1]);<br />
-                </div>
+                <pre class="code"><code>
+//define a array using define function
+define('animals', [
+'dog',
+'cat',
+'bird'
+]);
+print(animals[1]);
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    cat
-                </div>
+                <pre class="code"><code>
+cat
+                </code></pre>
             </p>
 
             <h2 id="anon">Анонимни класове</h2>
@@ -261,38 +261,38 @@
                 <br />
                 <br />
                 <b>Пример:</b>
-                <div class="code">
-                    interface Logger {<br />
-                        public function log(string $msg);<br />
-                    }<br />
-                    <br />
-                    class Application {<br />
-                        private $logger;<br />
-                        <br />
-                        public function getLogger(): Logger {<br />
-                            return $this->logger;<br />
-                        }<br />
-                        <br />
-                        public function setLogger(Logger $logger) {<br />
-                            $this->logger = $logger;<br />
-                        }<br />
-                    }<br />
-                    <br />
-                    $app = new Application;<br />
-                    $app->setLogger(new class implements Logger {<br />
-                        public function log(string $msg) {<br />
-                            print($msg);<br />
-                        }<br />
-                    });<br />
-                    <br />
-                    $app->getLogger()->log("My first Log Message");<br />
-                </div>
+                <pre class="code"><code>
+interface Logger {
+    public function log(string $msg);
+}
+
+class Application {
+    private $logger;
+
+    public function getLogger(): Logger {
+        return $this->logger;
+    }
+
+    public function setLogger(Logger $logger) {
+        $this->logger = $logger;
+    }
+}
+
+$app = new Application;
+$app->setLogger(new class implements Logger {
+    public function log(string $msg) {
+        print($msg);
+    }
+});
+
+$app->getLogger()->log("My first Log Message");
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    My first Log Message
-                </div>
+                <pre class="code"><code>
+My first Log Message
+                </code></pre>
             </p>
 
             <h2 id="closure">Closure::call()</h2>
@@ -301,47 +301,47 @@
                 <br />
                 <br />
                 <b>Пример - Pre PHP 7</b>
-                <div class="code">
-                    class A {<br />
-                        private $x = 1;<br />
-                    }<br />
-                    <br />
-                    // Define a closure Pre PHP 7 code<br />
-                    $getValue = function() {<br />
-                        return $this->x;<br />
-                    };<br />
-                    <br />
-                    // Bind a closure<br />
-                    $value = $getValue->bindTo(new A, 'A');<br />
-                    <br />
-                    print($value());<br />
-                </div>
+                <pre class="code"><code>
+class A {
+    private $x = 1;
+}
+
+// Define a closure Pre PHP 7 code
+$getValue = function() {
+    return $this->x;
+};
+
+// Bind a closure
+$value = $getValue->bindTo(new A, 'A');
+
+print($value());
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    1
-                </div>
+                <pre class="code"><code>
+1
+                </code></pre>
 
                 <b>Пример - PHP 7+</b>
-                <div class="code">
-                    class A {<br />
-                        private $x = 1;<br />
-                    }<br />
-                    <br />
-                    // PHP 7+ code, Define<br />
-                    $value = function() {<br />
-                        return $this->x;<br />
-                    };<br />
-                    <br />
-                    print($value->call(new A));<br />
-                </div>
+                <pre class="code"><code>
+class A {
+    private $x = 1;
+}
+
+// PHP 7+ code, Define
+$value = function() {
+    return $this->x;
+};
+
+print($value->call(new A));
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    1
-                </div>
+                <pre class="code"><code>
+1
+                </code></pre>
             </p>
 
             <h2 id="unserialize">Филтриран unserialize</h2>
@@ -350,41 +350,41 @@
                 <br />
                 <br />
                 <b>Пример</b>
-                <div class="code">
-                    class MyClass1 {<br />
-                        public $obj1prop;<br />
-                    }<br />
-                    class MyClass2 {<br />
-                        public $obj2prop;<br />
-                    }<br />
-                    <br />
-                    $obj1 = new MyClass1();<br />
-                    $obj1->obj1prop = 1;<br />
-                    $obj2 = new MyClass2();<br />
-                    $obj2->obj2prop = 2;<br />
-                    <br />
-                    $serializedObj1 = serialize($obj1);<br />
-                    $serializedObj2 = serialize($obj2);<br />
-                    <br />
-                    // default behaviour that accepts all classes<br />
-                    // second argument can be ommited.<br />
-                    // if allowed_classes is passed as false, unserialize converts all objects into __PHP_Incomplete_Class object<br />
-                    $data = unserialize($serializedObj1 , ["allowed_classes" => true]);<br />
-                    <br />
-                    // converts all objects into __PHP_Incomplete_Class object except those of MyClass1 and MyClass2<br />
-                    $data2 = unserialize($serializedObj2 , ["allowed_classes" => ["MyClass1", "MyClass2"]]);<br />
-                    <br />
-                    print($data->obj1prop);<br />
-                    print("&lt;br/&gt;");<br />
-                    print($data2->obj2prop);<br />
-                </div>
+                <pre class="code"><code>
+class MyClass1 {
+    public $obj1prop;
+}
+class MyClass2 {
+    public $obj2prop;
+}
+
+$obj1 = new MyClass1();
+$obj1->obj1prop = 1;
+$obj2 = new MyClass2();
+$obj2->obj2prop = 2;
+
+$serializedObj1 = serialize($obj1);
+$serializedObj2 = serialize($obj2);
+
+// default behaviour that accepts all classes
+// second argument can be ommited.
+// if allowed_classes is passed as false, unserialize converts all objects into __PHP_Incomplete_Class object
+$data = unserialize($serializedObj1 , ["allowed_classes" => true]);
+
+// converts all objects into __PHP_Incomplete_Class object except those of MyClass1 and MyClass2
+$data2 = unserialize($serializedObj2 , ["allowed_classes" => ["MyClass1", "MyClass2"]]);
+
+print($data->obj1prop);
+print("&lt;br/&gt;");
+print($data2->obj2prop);
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:<br />
 
-                <div class="code">
-                    1<br />
-                    2<br />
-                </div>
+                <pre class="code"><code>
+1
+2
+                </code></pre>
             </p>
 
             <h2 id="char">IntlChar</h2>
@@ -393,19 +393,19 @@
                 <br />
                 <br />
                 <b>Пример</b>
-                <div class="code">
-                    printf('%x', IntlChar::CODEPOINT_MAX);<br />
-                    print (IntlChar::charName('@'));<br />
-                    print(IntlChar::ispunct('!'));<br />
-                </div>
+                <pre class="code"><code>
+printf('%x', IntlChar::CODEPOINT_MAX);
+print (IntlChar::charName('@'));
+print(IntlChar::ispunct('!'));
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:<br />
 
-                <div class="code">
-                    10ffff
-                    COMMERCIAL AT
-                    true
-                </div>
+                <pre class="code"><code>
+10ffff
+COMMERCIAL AT
+true
+                </code></pre>
             </p>
 
             <h2 id="csprng">CSPRNG</h2>
@@ -420,9 +420,9 @@
                 random_bytes() генерира низ с произволна дължина от криптографски случайни байтове, които са подходящи за криптографска употреба, като например генериране на "salts", ключове или инициализиращи вектори.
 
                 <h4>Синтаксис</h4>
-                <div class="code">
-                    string random_bytes ( int $length )
-                </div>
+                <pre class="code"><code>
+string random_bytes ( int $length )
+                </code></pre>
 
                 <h4>Параметри</h4>
                 <i>length</i> − дължината в байтове на случайния низ, който да бъде върнат.
@@ -438,24 +438,24 @@
                 Ако е подадена невалидна дължина от байтове, ще бъде хвърлена грешка от тип Error.<br /><br />
 
                 <b>Пример</b>
-                <div class="code">
-                    $bytes = random_bytes(5);<br />
-                    print(bin2hex($bytes));<br />
-                </div>
+                <pre class="code"><code>
+$bytes = random_bytes(5);
+print(bin2hex($bytes));
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    54cc305593
-                </div>
+                <pre class="code"><code>
+54cc305593
+                </code></pre>
 
                 <h3>random_int()</h3>
                 random_int() генерира псевдо-случайно цели числа, подходящи за ситуации, в които са критични безпристрастните резултати.
 
                 <h4>Синтаксис</h4>
-                <div class="code">
-                    int random_int ( int $min , int $max )
-                </div>
+                <pre class="code"><code>
+int random_int ( int $min , int $max )
+                </code></pre>
 
                 <h4>Параметри</h4>
                 <i>min</i> − най-малкото число, което може да бъде върнато; трябва да е PHP_INT_MIN или по-голямо.<br />
@@ -473,18 +473,18 @@
                 Ако max е по-малко от min, ще бъде хвърлена грешка от тип Error.<br /><br />
 
                 <b>Пример</b>
-                <div class="code">
-                    print(random_int(100, 999));<br />
-                    print("");<br />
-                    print(random_int(-1000, 0));<br />
-                </div>
+                <pre class="code"><code>
+print(random_int(100, 999));
+print("");
+print(random_int(-1000, 0));
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    614<br />
-                    -882<br />
-                </div>
+                <pre class="code"><code>
+614
+-882
+                </code></pre>
             </p>
 
             <h2 id="use">Use изрази</h2>
@@ -494,25 +494,25 @@
                 <br />
                 <b>Пример</b>
 
-                <div class="code">
-                    // Before PHP 7<br />
-                    use com\tutorialspoint\ClassA;<br />
-                    use com\tutorialspoint\ClassB;<br />
-                    use com\tutorialspoint\ClassC as C;<br />
-                    <br />
-                    use function com\tutorialspoint\fn_a;<br />
-                    use function com\tutorialspoint\fn_b;<br />
-                    use function com\tutorialspoint\fn_c;<br />
-                    <br />
-                    use const com\tutorialspoint\ConstA;<br />
-                    use const com\tutorialspoint\ConstB;<br />
-                    use const com\tutorialspoint\ConstC;<br />
-                    <br />
-                    // PHP 7+ code<br />
-                    use com\tutorialspoint\{ClassA, ClassB, ClassC as C};<br />
-                    use function com\tutorialspoint\{fn_a, fn_b, fn_c};<br />
-                    use const com\tutorialspoint\{ConstA, ConstB, ConstC};<br />
-                </div>
+                <pre class="code"><code>
+// Before PHP 7
+use com\tutorialspoint\ClassA;
+use com\tutorialspoint\ClassB;
+use com\tutorialspoint\ClassC as C;
+
+use function com\tutorialspoint\fn_a;
+use function com\tutorialspoint\fn_b;
+use function com\tutorialspoint\fn_c;
+
+use const com\tutorialspoint\ConstA;
+use const com\tutorialspoint\ConstB;
+use const com\tutorialspoint\ConstC;
+
+// PHP 7+ code
+use com\tutorialspoint\{ClassA, ClassB, ClassC as C};
+use function com\tutorialspoint\{fn_a, fn_b, fn_c};
+use const com\tutorialspoint\{ConstA, ConstB, ConstC};
+                </code></pre>
             </p>
 
             <h2 id="error">Обработване на грешки</h2>
@@ -525,30 +525,30 @@
                 <img src="https://www.tutorialspoint.com/php7/images/exception_hierarchy.jpg" alt="Throwable hierarchy"/>
                 <br />
                 <b>Пример</b>
-                <div class="code">
-                    class MathOperations {<br />
-                        protected $n = 10;<br />
-                        <br />
-                        // Try to get the Division by Zero error object and display as Exception<br />
-                        public function doOperation(): string {<br />
-                            try {<br />
-                                $value = $this->n % 0;<br />
-                                return $value;<br />
-                            } catch (DivisionByZeroError $e) {<br />
-                                return $e->getMessage();<br />
-                            }<br />
-                        }<br />
-                    }<br />
-                    <br />
-                    $mathOperationsObj = new MathOperations();<br />
-                    print($mathOperationsObj->doOperation());<br />
-                </div>
+                <pre class="code"><code>
+class MathOperations {
+    protected $n = 10;
+
+    // Try to get the Division by Zero error object and display as Exception
+    public function doOperation(): string {
+        try {
+            $value = $this->n % 0;
+            return $value;
+        } catch (DivisionByZeroError $e) {
+            return $e->getMessage();
+        }
+    }
+}
+
+$mathOperationsObj = new MathOperations();
+print($mathOperationsObj->doOperation());
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    Modulo by zero
-                </div>
+                <pre class="code"><code>
+Modulo by zero
+                </code></pre>
             </p>
 
             <h2 id="intdiv">Целочислено деленe</h2>
@@ -557,19 +557,19 @@
                 <br />
                 <br />
                 <b>Пример</b>
-                <div class="code">
-                    $value = intdiv(10,3);<br />
-                    var_dump($value);<br />
-                    print(" ");<br />
-                    print($value);<br />
-                </div>
+                <pre class="code"><code>
+$value = intdiv(10,3);
+var_dump($value);
+print(" ");
+print($value);
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    int(3)<br />
-                    3<br />
-                </div>
+                <pre class="code"><code>
+int(3)
+3
+                </code></pre>
             </p>
 
             <h2 id="session">Параметри на session_start()</h2>
@@ -577,12 +577,12 @@
                 В PHP7+, функцията session_start() масив от опции, които са с приоритет пред директивите за конфигурация на сесията, зададени в php.ini. Тези опции поддържат session.lazy_write, което е включено по подразбиране и кара PHP да презапише който и да е сесиен файл, ако данните за сесията са се променили.
                 Друга добавена опция е read_and_close, която показва, че данните от сесията трябва да бъдат прочетени и след това сесията трябва да бъде веднага затворена непроменена. Например, задайте session.cache_limiter да бъде частен и дайте стойност на флага за затваряне на сесията веднага след четенето ѝ, изполвайки следното парче код:
                 <br />
-                <div class="code">
-                    session_start([<br />
-                        'cache_limiter' => 'private',<br />
-                        'read_and_close' => true,<br />
-                    ]);<br />
-                </div>
+                <pre class="code"><code>
+session_start([
+    'cache_limiter' => 'private',
+    'read_and_close' => true,
+]);
+                </code></pre>
             </p>
 
             <h2 id="deprecations">Неща от езика, които вече не се препоръчват да се използват</h2>
@@ -595,40 +595,40 @@
                 <br />
                 <b>Пример</b>
 
-                <div class="code">
-                    class A {<br />
-                        function A() {<br />
-                            print('Style Constructor');<br />
-                        }<br />
-                    }<br />
-                </div>
+                <pre class="code"><code>
+class A {
+    function A() {
+        print('Style Constructor');
+    }
+}
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    Deprecated: Methods with the same name as their class will not be constructors<br />
-                    in a future version of PHP; A has a deprecated constructor in...<br />
-                    Static calls to non-static methods<br />
-                    Static calls to non-static methods are deprecated, and may be removed in the future.<br />
-                </div>
+                <pre class="code"><code>
+Deprecated: Methods with the same name as their class will not be constructors
+in a future version of PHP; A has a deprecated constructor in...
+Static calls to non-static methods
+Static calls to non-static methods are deprecated, and may be removed in the future.
+                </code></pre>
                 <br /><br />
                 <b>Пример</b>
 
-                <div class="code">
-                    class A {<br />
-                        function b() {<br />
-                            print('Non-static call');<br />
-                        }<br />
-                    }<br />
-                    A::b();<br />
-                </div>
+                <pre class="code"><code>
+class A {
+    function b() {
+        print('Non-static call');
+    }
+}
+A::b();
+                </code></pre>
 
                 Примерът ще произведе следния изход в браузъра:
 
-                <div class="code">
-                    Deprecated: Non-static method A::b() should not be called statically in...<br />
-                    Non-static call<br />
-                </div>
+                <pre class="code"><code>
+Deprecated: Non-static method A::b() should not be called statically in...
+Non-static call
+                </code></pre>
                 <h3>password_hash() salt опция</h3>
                 Опцията за salt на функцията password_hash() не се препоръчва за изполване, за да не генерират разработчиците свои (обикновено несигурни) salts. Самата функция генерира криптографски силна salt, когато няма такава подадена от програмиста.<br />
 
@@ -636,7 +636,7 @@
                 Опцията SSL на capture_session_meta не се препоръчва да се използва повече. SSL метаданни сега се изполват чрез функцията stream_get_meta_data().
             </p>
 
-            <h2 id="removed">Премахнати неща от езика</h2>
+            <h2 id="removed">Премахнати елементи от езика</h2>
             <p>
                 Следните разширения са премахнати от РНР 7+:
 
